@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BakeFlow — Order Management for Bakeries & Cafes</title>
+    <style>
+        :root {
+            --primary: #d97706;
+            --primary-dark: #b45309;
+            --bg: #fdfbf7;
+            --surface: #ffffff;
+            --text: #1f2937;
+            --text-light: #4b5563;
+            --border: #e5e7eb;
+            --radius: 12px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 0 16px;
+        }
+
+        header {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 24px 0 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary-dark);
+        }
+
+        .demo-btn-sm {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .demo-btn-sm:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        main {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 32px 0;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            color: #111827;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 24px;
+        }
+
+        .cta-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            width: 100%;
+            max-width: 320px;
+            padding: 14px 24px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: var(--radius);
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: 0 4px 6px -1px rgba(217, 119, 6, 0.2);
+            transition: background-color 0.2s;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            width: 100%;
+            max-width: 320px;
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: var(--radius);
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+
+        .btn-secondary:hover {
+            background-color: #fffbeb;
+        }
+
+        /* Problem Section */
+        .section {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px;
+            margin-bottom: 32px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            margin-bottom: 16px;
+            color: #111827;
+        }
+
+        .quote-box {
+            font-style: italic;
+            color: var(--text-light);
+            border-left: 4px solid var(--primary);
+            padding-left: 16px;
+            margin: 16px 0;
+            font-size: 1rem;
+        }
+
+        /* Steps Section */
+        .steps-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .step-item {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            background: #fffbeb;
+            color: var(--primary);
+            font-weight: 700;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            border: 1px solid #fde68a;
+        }
+
+        .step-content h3 {
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+
+        .step-content p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* Pricing Section */
+        .pricing-card {
+            text-align: center;
+            background: linear-gradient(to bottom, #ffffff, #fffbeb);
+            border: 2px solid #fde68a;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            margin: 12px 0;
+        }
+
+        .price span {
+            font-size: 1rem;
+            font-weight: normal;
+            color: var(--text-light);
+        }
+
+        /* Waiting List Form */
+        .waitlist-form {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .waitlist-input {
+            padding: 12px 16px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .waitlist-input:focus {
+            border-color: var(--primary);
+        }
+
+        .success-message {
+            display: none;
+            background: #ecfdf5;
+            color: #065f46;
+            padding: 16px;
+            border-radius: var(--radius);
+            border: 1px solid #a7f3d0;
+            text-align: center;
+            font-weight: 600;
+            margin-top: 16px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 24px 0;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            border-top: 1px solid var(--border);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">🍞 BakeFlow</div>
+        <a href="app.html" class="demo-btn-sm">Try Demo</a>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Never miss an allergy or drop an order again.</h1>
+            <p>Pull Instagram DMs, WhatsApp, phone calls, and walk-ins into one crystal-clear order board designed specifically for small bakeries and cafes.</p>
+            <div class="cta-group">
+                <a href="app.html" class="btn-primary">Try the Live Demo</a>
+                <a href="#pricing" class="btn-secondary">Join the Waiting List</a>
+            </div>
+        </section>
+
+        <!-- Problem Section -->
+        <section class="section">
+            <h2>The Chaos in the Kitchen</h2>
+            <p>Running a bakery means juggling customer requests from everywhere at once while your hands are covered in flour.</p>
+            <div class="quote-box">
+                "Orders come in through WhatsApp, text, Instagram, and phone calls. Halfway through decorating a wedding cake, I'm scrambling through chat threads trying to remember if the gluten allergy note was for table four or the pickup box."
+            </div>
+            <p style="font-size: 0.9rem; color: var(--text-light);">BakeFlow catches every single detail so nothing ever slips through the cracks.</p>
+        </section>
+
+        <!-- How It Works -->
+        <section class="section">
+            <h2>How It Works</h2>
+            <ul class="steps-list">
+                <li class="step-item">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Log Every Order Instantly</h3>
+                        <p>Type or paste orders from any channel into one streamlined screen in seconds.</p>
+                    </div>
+                </li>
+                <li class="step-item">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Automatic Allergy Highlighting</h3>
+                        <p>Critical dietary flags and custom notes stand out immediately so kitchen safety is absolute.</p>
+                    </div>
+                </li>
+                <li class="step-item">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Fulfill with Confidence</h3>
+                        <p>View your daily production schedule at a glance without ever hunting through chat history.</p>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Pricing & Waiting List Section -->
+        <section class="section pricing-card" id="pricing">
+            <h2>Simple, Transparent Pricing</h2>
+            <p>One straightforward monthly plan for your entire team.</p>
+            <div class="price">£29 <span>/ month</span></div>
+            <p style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 16px;">Cancel anytime. Setup takes 2 minutes.</p>
+            
+            <form id="waitlistForm" class="waitlist-form" onsubmit="handleWaitlist(event)">
+                <input type="email" id="emailInput" class="waitlist-input" placeholder="Enter your bakery or cafe email" required>
+                <button type="submit" class="btn-primary" style="max-width: 100%;">Join the Waiting List</button>
+            </form>
+            
+            <div id="successMessage" class="success-message">
+                🎉 You're on the list! We'll reach out soon to set up your bakery.
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 BakeFlow. Built for independent bakers and cafes.</p>
+    </footer>
+
+    <script>
+        function handleWaitlist(event) {
+            event.preventDefault();
+            const form = document.getElementById('waitlistForm');
+            const success = document.getElementById('successMessage');
+            
+            // Hide form and show success confirmation message
+            form.style.display = 'none';
+            success.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
